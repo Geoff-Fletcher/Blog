@@ -18,10 +18,10 @@ class Post(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ["-created_on"]
+        ordering = ["created_on"]
 
-        def __str__(self):
-            return f"{self.title} | written by {self.author}"
+    def __str__(self):
+            return f"{self.title} | written by {self.author}, {self.created_on}"
 
 class Comment(models.Model):
     post = models.ForeignKey(
@@ -35,5 +35,5 @@ class Comment(models.Model):
     class Meta:
         ordering = ["created_on"]
 
-        def __str__(self):
+    def __str__(self):
             return f"{self.body} | written by {self.author}"
